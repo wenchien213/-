@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-theme: #f8f9fc;
+  --color-panel-bg: #ffffff;
+  --color-text-main: #2d3436;
+  --color-text-sub: #636e72;
+  --color-accent-theme: #6c5ce7;
+  --color-c1: #4a90e2;
+  --color-c2: #e17055;
+  --color-c3: #fdcb6e;
+  --color-c4: #00b894;
+  --color-border-theme: #dfe6e9;
+  
+  --font-sans: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-theme text-text-main;
+  }
+}
