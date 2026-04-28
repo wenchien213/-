@@ -7,7 +7,7 @@ export async function analyzeDiary(
   diary: string,
   userApiKey?: string | null
 ) {
-  const apiKey = userApiKey || import.meta.env.VITE_GEMINI_API_KEY;
+  const apiKey = userApiKey || import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error("系統配置錯誤：找不到 API 金鑰。請檢查 Secrets 設定。");
   }

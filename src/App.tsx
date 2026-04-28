@@ -46,8 +46,8 @@ const BrainQuadrant = ({
   const roundedClasses = {
     1: "rounded-tl-[100px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px]",
     2: "rounded-tl-[20px] rounded-tr-[20px] rounded-br-[20px] rounded-bl-[100px]",
-    3: "rounded-tl-[20px] rounded-tr-[100px] rounded-br-[20px] rounded-bl-[20px]",
-    4: "rounded-tl-[20px] rounded-tr-[20px] rounded-br-[100px] rounded-bl-[20px]",
+    3: "rounded-tl-[20px] rounded-tr-[20px] rounded-br-[100px] rounded-bl-[20px]",
+    4: "rounded-tl-[20px] rounded-tr-[100px] rounded-br-[20px] rounded-bl-[20px]",
   };
 
   const scale = 0.8 + (score / 100) * 0.4; // Scale between 0.8 and 1.2 based on score
@@ -63,7 +63,7 @@ const BrainQuadrant = ({
         active ? "opacity-100 z-10" : "opacity-60 hover:opacity-80",
         id === 1 ? "top-0 left-0" : 
         id === 2 ? "bottom-0 left-0" : 
-        id === 3 ? "top-0 right-0" : 
+        id === 4 ? "top-0 right-0" : 
         "bottom-0 right-0"
       )}
       onClick={onClick}
@@ -286,14 +286,16 @@ export default function App() {
                   <BrainMap scores={result.scores} />
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 w-full mb-12">
                   {[1, 2, 3, 4].map((id) => (
-                    <div key={id} className="flex flex-col items-center p-4 rounded-2xl border border-border-theme bg-stone-50/30">
-                      <div className={cn(
-                        "w-2 h-2 rounded-full mb-2",
-                        id === 1 ? "bg-c1" : id === 2 ? "bg-c2" : id === 3 ? "bg-c3" : "bg-c4"
-                      )} />
-                      <span className="text-[10px] font-bold text-text-sub uppercase tracking-widest mb-1">{PERSONALITIES[id as Character].name}</span>
+                    <div key={id} className="flex flex-row items-center justify-between p-4 px-6 rounded-2xl border border-border-theme bg-stone-50/30">
+                      <div className="flex items-center">
+                        <div className={cn(
+                          "w-2 h-2 rounded-full mr-4",
+                          id === 1 ? "bg-c1" : id === 2 ? "bg-c2" : id === 3 ? "bg-c3" : "bg-c4"
+                        )} />
+                        <span className="text-xs font-bold text-text-sub uppercase tracking-widest">{PERSONALITIES[id as Character].name}</span>
+                      </div>
                       <span className="text-xl font-black" style={{ color: `var(--c${id})` }}>{result.scores[id as Character]}%</span>
                     </div>
                   ))}
